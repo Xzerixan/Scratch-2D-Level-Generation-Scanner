@@ -1,0 +1,47 @@
+define Scan
+delete all of [Level v]
+repeat (13)
+  add () to [Level]
+end
+go to x: (0) y: (0)
+set size to (100)%
+go to [front] layer
+clear graphic effects
+switch costume to background
+show
+create clone of (myself)
+switch costume to (Lev#)
+set size to (100)%
+go to x: (-120) y: (0)
+create clone of (myself)
+switch costume to (Scanner)
+set size to (100)%
+go to x: (-231) y: (11)
+set [!Scroll# v] to (1)
+repeat (13)
+  repeat (300)
+    set [!Type block to add v] to (g)
+    if <not <touching color ()?>> then
+      Determine Color
+    end
+    replace item !Scroll# of [Level v] with (join (item (!Scroll#) of [Level V]) (!Type block to add))
+    change x by (2)
+  end
+	change [!Scroll# v] by (1)
+	change y by (-2)
+	change x by (-231)
+end
+
+when Green Flag clicked
+hide
+
+define Determine Color
+if <touching color (BLACK)?> then
+	set [!Type block to add v] to (b)
+else
+	if <touching color (29,100,79)?> then
+		set [!Type block to add v] to (3)
+	else
+		if <touching color (29,100,63)?> then
+			set [!Type block to add v] to (o)
+		else
